@@ -11,6 +11,8 @@ AppBundle\Entity\User:
         website: <domainName()>
         ip: <ipv4()>
         products: 2x @product*
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>
 
 AppBundle\Entity\Product:
     product{1..20}:
@@ -18,6 +20,9 @@ AppBundle\Entity\Product:
         weight: <randomDigit()>
         color: <colorName()>
         fragile: <randomElement([true, false])>
+        slug (unique): <word()>
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>
         user (unique): @user*
         categories: 2x @category*
         tags: 3x @tag*

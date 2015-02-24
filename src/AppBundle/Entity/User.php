@@ -96,14 +96,6 @@ class User
     private $ip;
 
     /**
-     * @var string
-     *
-     * @Gedmo\Slug(fields={"name"})
-     * @ORM\Column(name="slug", type="string", length=200, unique=true)
-     */
-    protected $slug;
-
-    /**
      * @var \DateTime
      *
      * @Gedmo\Timestampable(on="create")
@@ -478,28 +470,5 @@ class User
     public function getDeletedAt()
     {
         return $this->deletedAt;
-    }
-
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     * @return User
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Get slug
-     *
-     * @return string 
-     */
-    public function getSlug()
-    {
-        return $this->slug;
     }
 }

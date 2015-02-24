@@ -2,3 +2,6 @@ AppBundle\Entity\Tag:
     tag{1..30}:
         __construct: [<text(10)>]
         title: <word()>
+        slug (unique): <word()>
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>

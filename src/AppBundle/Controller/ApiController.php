@@ -2,18 +2,31 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Tag;
+use Doctrine\ORM\EntityManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
+/**
+ * Class ApiController
+ * @package AppBundle\Controller
+ */
+class ApiController extends Controller
 {
     /**
-     * @Route("/api/tags", name="homepage")
-     * @Template()
+     * @Route("/api/tags", name="api_tags")
+     * @Method("GET")
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function indexAction()
+    public function tagsAction(Request $request)
     {
-        return $this->getDoctrine()->getManager()->getRepository('Tag')->findAll();
+        /** @var EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+        $items = $em->getRepository("AppBundle:Tag")->findAll();
+        return new JsonResponse($items);
     }
 }

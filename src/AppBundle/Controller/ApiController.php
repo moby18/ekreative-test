@@ -9,11 +9,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/api/tags", name="homepage")
      * @Template()
      */
     public function indexAction()
     {
-        return [];
+        return $this->getDoctrine()->getManager()->getRepository('Tag')->findAll();
     }
 }
